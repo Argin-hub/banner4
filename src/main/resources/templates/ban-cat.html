@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+Heelo!
+<table>
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th>category name</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="banner : ${banners}">
+    <td th:text="${banner.id}"></td>
+    <td th:text="${banner.name}"></td>
+    <td><a th:href="@{banner-info/{id}(id=${banner.id})}">info</a></td>
+    <td><a th:href="@{banner-update/{id}(id=${banner.id})}">Edit</a></td>
+    <td><a th:href="@{banner-delete/{id}(id=${banner.id})}">Delete</a></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div th:if="${errorName}">
+  <h2>Баннер с таким именем уже есть</h2>
+</div>
+<form action="#" th:action="@{/create-banner}" th:object="${banner}" method="post">
+  <label for="firstName">name</label>
+  <input type="text" th:field="*{name}" id="firstName" placeholder=" Name">
+  <label for="lastName">content</label>
+  <input type="text" th:field="*{text}" id="lastName" placeholder="content">
+  <input type="text" th:field="*{price}" id="lastName" placeholder="price">
+  <tr>
+    <td>Select Cat:</td>
+    <td>
+      <select th:field="*{category}">
+        <option value=""> -- </option>
+        <option th:each="category : ${categories}"
+                th:value="${category.id}"
+                th:utext="${category.name}"/>
+      </select>
+
+    </td>
+  </tr>
+
+  <input type="submit" value="Create Banner">
+</form>
+
+<div th:switch="${categories}">
+  <h2 th:case="null">No category found!</h2>
+  <div th:case="*">
+    <h2>category</h2>
+    <table>
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>category name</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="category : ${categories}">
+        <td th:text="${category.id}"></td>
+        <td th:text="${category.name}"></td>
+        <td><a th:href="@{category/{id}(id=${category.id})}">all banners of this category</a></td>
+        <td><a th:href="@{category-delete/{id}(id=${category.id})}">Delete</a></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>

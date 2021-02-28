@@ -1,0 +1,13 @@
+package com.reactjs.banner4;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class Banner4ApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}

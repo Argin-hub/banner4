@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+F I R S T
+
+<table cellpadding="3" width="400" border="1">
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th>name</th>
+    <th>deleted</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="banner : ${banners}">
+    <td th:text="${banner.id}"></td>
+    <td th:text="${banner.name}"></td>
+    <td th:text="${banner.isDeleted()}"></td>
+  </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th>category name</th>
+  </tr>
+  </thead>
+  <tbody>
+
+  <tr th:each="category : ${categories}">
+    <td th:text="${category.id}"></td>
+    <td th:text="${category.name}"></td>
+    <td><a th:href="@{category-update/{id}(id=${category.id})}">Edit</a></td>
+    <td><a th:href="@{category-delete/{id}(id=${category.id})}">Delete</a></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

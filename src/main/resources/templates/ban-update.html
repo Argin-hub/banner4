@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="https://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+ban-upd
+
+<form action="#" th:action="@{/update-ban}" th:object="${banner}" method="post">
+  <label for="id">ID</label>
+  <input readonly type="number" th:field="*{id}" id="id" placeholder="ID">
+  <br/>
+  <label for="firstName">name</label>
+  <input type="text" th:field="*{name}" id="firstName" placeholder=" Name">
+  <label for="lastName">content</label>
+  <input type="text" th:field="*{text}" id="lastName" placeholder="content">
+  <input type="text" th:field="*{price}" id="lastName" placeholder="price">
+  <input type="submit" value="Update Banner">
+</form>
+</body>
+</html>

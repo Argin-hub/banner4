@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body bgcolor="#faf0e6">
+<p>Поиск по имени баннера</p>
+<form th:action="@{/found}" method="post">
+  <input type="text" name="banner">
+  <input type="submit" />
+</form>
+
+<p>Поиск по имени категории</p>
+<form th:action="@{/found_cat}" method="post">
+  <input type="text" name="cat">
+  <input type="submit" />
+</form>
+
+<p><a href="/create-banner"> <h3>create banner</h3></a></p>
+
+<p><a href="/create-cat"> <h3>create category</h3></a></p>
+
+<p><a href="/banners"> <h3>rest api version</h3></a></p>
+
+<div><h4>all banners</h4></div>
+<table border="1" cellpadding="5" width="600">
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th> name</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="banner : ${banners}">
+    <td th:text="${banner.id}"></td>
+    <td th:text="${banner.name}"></td>
+    <td th:text="${banner.creationDate}"></td>
+    <td><a th:href="@{banner-info/{id}(id=${banner.id})}">info</a></td>
+    <td><a th:href="@{ban-upd/{id}(id=${banner.id})}">Edit</a></td>
+    <td><a th:href="@{banner-delete/{id}(id=${banner.id})}">Delete</a></td>
+  </tr>
+  </tbody>
+</table>
+
+</body>
+</html>
